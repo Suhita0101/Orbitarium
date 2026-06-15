@@ -50,17 +50,6 @@ Then visit:
 http://localhost:4174
 ```
 
-## Deployment
-
-This project can be deployed on any static hosting platform, including:
-
-- GitHub Pages
-- Netlify
-- Vercel
-- Cloudflare Pages
-
-For GitHub Pages, push the repository to GitHub, enable Pages in the repository settings, and choose the branch that contains `index.html`.
-
 ## Content Sources
 
 The educational content is based on public space science knowledge and NASA reference material, including information about the solar system, planets, missions, black holes, galaxies, and telescopes.
