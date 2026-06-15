@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Orbitarium | Space Exploration Museum</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <canvas class="starfield" id="starfield" aria-hidden="true"></canvas>
+    <div class="cinematic-atmosphere" aria-hidden="true">
+      <span class="nebula veil-one"></span>
+      <span class="nebula veil-two"></span>
+      <span class="comet comet-one"></span>
+      <span class="comet comet-two"></span>
+      <span class="scanline"></span>
+    </div>
+    <div class="scene-flash" id="sceneFlash" aria-hidden="true"></div>
+
+    <header class="site-header" data-reveal>
+      <a class="brand" href="#home" aria-label="Space Exploration Museum home">
+        <span class="brand-mark"></span>
+        <span>Orbitarium</span>
+      </a>
+      <nav class="nav-links" aria-label="Primary navigation">
+        <a href="#planets">Planets</a>
+        <a href="#knowledge">Knowledge</a>
+        <a href="#missions">Missions</a>
+        <a href="#rockets">Rockets</a>
+        <a href="#astronauts">Astronauts</a>
+        <a href="#cosmos">Cosmos</a>
+        <a href="#quiz">Quiz</a>
+      </nav>
+      <button class="sound-toggle" id="soundToggle" type="button" aria-pressed="false">
+        Soundscape
+      </button>
+    </header>
+
+    <aside class="sound-console" id="soundConsole" aria-label="Ambient sound selector">
+      <div class="sound-console-head">
+        <div>
+          <p class="panel-kicker">Soundscape</p>
+          <strong id="activeSoundName">Choose a signal</strong>
+          <p class="sound-help" id="soundHelp">Choose a track. The audio is embedded directly in this website.</p>
+        </div>
+        <button class="sound-close" id="soundClose" type="button" aria-label="Minimize sound panel">Minimize</button>
+      </div>
+      <div class="sound-tracks" id="soundTracks"></div>
+      <div class="sound-highlights" id="soundHighlights" aria-live="polite"></div>
+      <div class="embedded-player">
+        <button class="play-sound" id="playSound" type="button">Play Selected Track</button>
+        <audio id="ambientAudio" controls loop preload="metadata"></audio>
+        <p class="audio-status" id="audioStatus">Choose a soundscape to begin.</p>
+      </div>
+    </aside>
+
+    <main id="home">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-copy" data-reveal>
+          <p class="eyebrow">Interactive digital exhibit</p>
+          <h1 id="hero-title">Orbitarium</h1>
+          <p class="hero-text">
+            Step into a living space museum where every planet bends the room's
+            atmosphere, mission consoles open deeper briefings, and the quiz
+            feels more like a launch check than a worksheet.
+          </p>
+          <div class="hero-actions">
+            <a class="button primary" href="#solar-system">Launch Tour</a>
+            <a class="button secondary" href="#knowledge">Open Atlas</a>
+          </div>
+        </div>
+        <div class="orbital-stage" aria-hidden="true" data-reveal>
+          <div class="sun-core"></div>
+          <div class="orbit orbit-one"><span class="planet mini blue"></span></div>
+          <div class="orbit orbit-two"><span class="planet mini red"></span></div>
+          <div class="orbit orbit-three"><span class="planet mini green"></span></div>
+          <div class="probe"></div>
+        </div>
+      </section>
+
+      <section class="section solar-section" id="solar-system" aria-labelledby="solar-title">
+        <div class="section-heading" data-reveal>
+          <p class="eyebrow">Hands-on exhibit</p>
+          <h2 id="solar-title">Interactive Solar System</h2>
+          <p>
+            Select a world to pause the orbit and inspect its museum card. The
+            planets keep moving until curiosity taps the glass.
+          </p>
+        </div>
+
+        <div class="solar-layout" data-reveal>
+          <div class="solar-view" id="solarView" aria-label="Animated solar system">
+            <button class="planet-button sun" data-planet="Sun" aria-label="Sun"></button>
+            <button class="planet-button mercury" data-planet="Mercury" aria-label="Mercury"></button>
+            <button class="planet-button venus" data-planet="Venus" aria-label="Venus"></button>
+            <button class="planet-button earth" data-planet="Earth" aria-label="Earth"></button>
+            <button class="planet-button mars" data-planet="Mars" aria-label="Mars"></button>
+            <button class="planet-button jupiter" data-planet="Jupiter" aria-label="Jupiter"></button>
+            <button class="planet-button saturn" data-planet="Saturn" aria-label="Saturn"></button>
+            <button class="planet-button uranus" data-planet="Uranus" aria-label="Uranus"></button>
+            <button class="planet-button neptune" data-planet="Neptune" aria-label="Neptune"></button>
+            <div class="solar-sun"></div>
+          </div>
+
+          <article class="planet-panel" id="planetPanel" aria-live="polite">
+            <p class="panel-kicker">Selected planet</p>
+            <h3>Earth</h3>
+            <p class="planet-meta">Home world | 1 moon | 365.25-day orbit</p>
+            <p>
+              A blue planet with liquid oceans, a protective atmosphere, plate
+              tectonics, and the only known biosphere in the solar system.
+            </p>
+            <dl class="fact-list">
+              <div><dt>Type</dt><dd>Terrestrial planet</dd></div>
+              <div><dt>Diameter</dt><dd>12,742 km</dd></div>
+              <div><dt>Known for</dt><dd>Oceans, life, active geology</dd></div>
+            </dl>
+          </article>
+        </div>
+        <div class="planet-picker" id="planetPicker" data-reveal aria-label="Planet quick selector"></div>
+        <div class="scene-briefing" id="sceneBriefing" data-reveal aria-live="polite"></div>
+      </section>
+
+      <section class="section atlas-section" id="knowledge" aria-labelledby="knowledge-title">
+        <div class="section-heading" data-reveal>
+          <p class="eyebrow">Cosmic atlas</p>
+          <h2 id="knowledge-title">Search the Museum Database</h2>
+          <p>
+            Browse facts by topic, compare worlds, and pull up quick explainers
+            without leaving the exhibit floor.
+          </p>
+        </div>
+
+        <div class="atlas-shell" data-reveal>
+          <div class="atlas-tools">
+            <label class="search-box" for="atlasSearch">
+              <span>Search</span>
+              <input id="atlasSearch" type="search" placeholder="Try: rings, Mars, gravity, galaxy..." />
+            </label>
+            <div class="filter-row" id="atlasFilters" aria-label="Knowledge filters"></div>
+          </div>
+          <div class="atlas-grid" id="atlasGrid" aria-live="polite"></div>
+        </div>
+      </section>
+
+      <section class="section comparison-section" aria-labelledby="comparison-title">
+        <div class="section-heading" data-reveal>
+          <p class="eyebrow">Planet lab</p>
+          <h2 id="comparison-title">Planet Comparison Console</h2>
+          <p>
+            The inner planets are small and rocky. The outer planets are giants,
+            with Jupiter and Saturn dominated by gas and Uranus and Neptune
+            classified as ice giants.
+          </p>
+        </div>
+        <div class="table-wrap" data-reveal>
+          <table>
+            <thead>
+              <tr>
+                <th>World</th>
+                <th>Type</th>
+                <th>Distance from Sun</th>
+                <th>Orbit</th>
+                <th>Moons</th>
+                <th>Signature feature</th>
+              </tr>
+            </thead>
+            <tbody id="planetTable"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="section" id="planets" aria-labelledby="planets-title">
+        <div class="section-heading" data-reveal>
+          <p class="eyebrow">Planet gallery</p>
+          <h2 id="planets-title">Worlds Worth Visiting</h2>
+        </div>
+        <div class="card-grid">
+          <article class="exhibit-card" data-reveal>
+            <div class="planet-art terran"></div>
+            <h3>Rocky Worlds</h3>
+            <p>Mercury, Venus, Earth, and Mars show how heat, atmospheres, and geology shape inner planets.</p>
+          </article>
+          <article class="exhibit-card" data-reveal>
+            <div class="planet-art giant"></div>
+            <h3>Gas Giants</h3>
+            <p>Jupiter and Saturn anchor vast moon systems, storm bands, rings, and magnetic fields.</p>
+          </article>
+          <article class="exhibit-card" data-reveal>
+            <div class="planet-art ice"></div>
+            <h3>Ice Giants</h3>
+            <p>Uranus and Neptune hold methane-rich atmospheres, deep winds, and cold blue mystery.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section expedition-section" aria-labelledby="expedition-title">
+        <div class="section-heading" data-reveal>
+          <p class="eyebrow">Dimension deck</p>
+          <h2 id="expedition-title">Choose an Expedition Mode</h2>
+          <p>
+            Switch between museum lenses to explore planets as environments,
+            mission targets, science puzzles, and future human destinations.
+          </p>
+        </div>
+        <div class="expedition-grid" id="expeditionGrid" data-reveal></div>
+      </section>
+
+      <section class="section mission-band" id="missions" aria-labelledby="missions-title">
+        <div class="section-heading" data-reveal>
+          <p class="eyebrow">Mission control</p>
+          <h2 id="missions-title">Exploration Milestones</h2>
+        </div>
+        <div class="timeline" id="timeline">
+          <article class="timeline-item" data-reveal>
+            <time>1957</time>
+            <h3>Sputnik 1</h3>
+            <p>The first artificial satellite begins the space age.</p>
+          </article>
+          <article class="timeline-item" data-reveal>
+            <time>1969</time>
+            <h3>Apollo 11</h3>
+            <p>Humans land on the Moon and return safely to Earth.</p>
+          </article>
+          <article class="timeline-item" data-reveal>
+            <time>1977</time>
+            <h3>Voyager</h3>
+            <p>Twin probes tour the outer planets and keep traveling beyond the heliosphere.</p>
+          </article>
+          <article class="timeline-item" data-reveal>
+            <time>1990</time>
+            <h3>Hubble</h3>
+            <p>A space telescope changes how humanity sees galaxies, nebulae, and cosmic time.</p>
+          </article>
+          <article class="timeline-item" data-reveal>
+            <time>2021</time>
+            <h3>James Webb</h3>
+            <p>Infrared observations reveal early galaxies, exoplanet chemistry, and stellar nurseries.</p>
+          </article>
+          <article class="timeline-item" data-reveal>
+            <time>2024+</time>
+            <h3>Artemis</h3>
+            <p>NASA's lunar exploration program prepares crewed missions around and back to the Moon.</p>
+          </article>
+        </div>
+        <div class="mission-dossier" id="missionDossier" data-reveal></div>
+      </section>
+
+      <section class="section" id="rockets" aria-labelledby="rockets-title">
+        <div class="section-heading" data-reveal>
+          <p class="eyebrow">Launch hall</p>
+          <h2 id="rockets-title">Rockets That Changed Reach</h2>
+        </div>
+        <div class="rocket-lab" data-reveal>
+          <div class="rocket-visual" aria-hidden="true">
+            <div class="rocket">
+              <span class="window"></span>
+              <span class="fin left"></span>
+              <span class="fin right"></span>
+              <span class="flame"></span>
+            </div>
+          </div>
+          <div class="rocket-copy">
+            <h3>From Saturn V to reusable boosters</h3>
+            <p>
+              Rockets turn chemistry into speed, lifting crews, telescopes, probes,
+              and cargo beyond the thick lower atmosphere.
+            </p>
+            <div class="stat-row">
+              <span><strong>110 m</strong> Saturn V height</span>
+              <span><strong>7.8 km/s</strong> orbital speed</span>
+              <span><strong>3 stages</strong> classic heavy lift</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section astronaut-section" id="astronauts" aria-labelledby="astronauts-title">
+        <div class="section-heading" data-reveal>
+          <p class="eyebrow">Crew stories</p>
+          <h2 id="astronauts-title">Astronauts in Focus</h2>
+        </div>
+        <div class="crew-grid">
+          <article class="crew-card" data-reveal>
+            <span class="helmet"></span>
+            <h3>Neil Armstrong</h3>
+            <p>Commander of Apollo 11 and the first person to walk on the Moon.</p>
+          </article>
+          <article class="crew-card" data-reveal>
+            <span class="helmet"></span>
+            <h3>Mae Jemison</h3>
+            <p>Engineer, physician, and the first Black woman to travel to space.</p>
+          </article>
+          <article class="crew-card" data-reveal>
+            <span class="helmet"></span>
+            <h3>Kalpana Chawla</h3>
+            <p>Aerospace engineer and astronaut whose missions inspired students worldwide.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section cosmos-section" id="cosmos" aria-labelledby="cosmos-title">
+        <div class="section-heading" data-reveal>
+          <p class="eyebrow">Deep space wing</p>
+          <h2 id="cosmos-title">Black Holes and Galaxies</h2>
+        </div>
+        <div class="cosmos-grid">
+          <article class="cosmos-card black-hole" data-reveal>
+            <div class="accretion" aria-hidden="true"></div>
+            <h3>Black Holes</h3>
+            <p>Dense concentrations of matter where gravity near the event horizon is strong enough that nothing, not even light, can escape.</p>
+          </article>
+          <article class="cosmos-card galaxy" data-reveal>
+            <div class="spiral" aria-hidden="true"></div>
+            <h3>Galaxies</h3>
+            <p>Gravity-bound systems of stars, planets, gas, dust, dark matter, and often a central supermassive black hole.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section glossary-section" aria-labelledby="glossary-title">
+        <div class="section-heading" data-reveal>
+          <p class="eyebrow">Field guide</p>
+          <h2 id="glossary-title">Space Terms You Keep Seeing</h2>
+        </div>
+        <div class="glossary-grid" id="glossaryGrid"></div>
+      </section>
+
+      <section class="section quiz-section" id="quiz" aria-labelledby="quiz-title">
+        <div class="section-heading" data-reveal>
+          <p class="eyebrow">Interactive challenge</p>
+          <h2 id="quiz-title">Mission Specialist Quiz</h2>
+          <p>Answer quick exhibit questions and see if you are ready for the next launch window.</p>
+        </div>
+        <div class="quiz-card" data-reveal>
+          <div id="quizQuestion"></div>
+          <div class="quiz-options" id="quizOptions"></div>
+          <p class="quiz-feedback" id="quizFeedback" aria-live="polite"></p>
+          <button class="button primary" id="nextQuestion" type="button">Next Question</button>
+        </div>
+      </section>
+
+      <section class="section sources-section" aria-labelledby="sources-title">
+        <div class="section-heading" data-reveal>
+          <p class="eyebrow">Research shelf</p>
+          <h2 id="sources-title">Source Trail</h2>
+          <p>
+            Fact links for visitors who want to continue exploring primary
+            science references.
+          </p>
+        </div>
+        <div class="source-links" data-reveal>
+          <a href="https://science.nasa.gov/solar-system/planets/" target="_blank" rel="noreferrer">NASA Planets</a>
+          <a href="https://science.nasa.gov/solar-system/solar-system-facts/" target="_blank" rel="noreferrer">NASA Solar System Facts</a>
+          <a href="https://science.nasa.gov/universe/black-holes/" target="_blank" rel="noreferrer">NASA Black Holes</a>
+          <a href="https://science.nasa.gov/universe/galaxies/" target="_blank" rel="noreferrer">NASA Galaxies</a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <a href="#home">Return to orbit</a>
+    </footer>
+
+    <script src="script.js?v=orbit-motion"></script>
+  </body>
+</html>
