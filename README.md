@@ -5,6 +5,7 @@ Orbitarium is an interactive space exploration museum built as a frontend-only w
 ## Features
 
 - Animated hero and starfield background
+- Immersive ambient soundscape for deeper immersion
 - Interactive solar system with clickable planets
 - Detailed planet panels with facts, atmosphere, gravity, temperature, exploration history, discoveries, and open science questions
 - Searchable cosmic atlas with category filters
